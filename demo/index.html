@@ -32,8 +32,8 @@
       line-height: 2em;
     }
   </style>
-  <script src="../src/jquery-2.1.4.min.js"></script>
-  <script src="../dist/jquery.danmu.min.js"></script>
+  <script src="./jquery.min.js"></script>
+  <script src="./jquery.danmu.min.js"></script>
 </head>
 
 <body class="center">
@@ -138,13 +138,13 @@ Demo<br><br>
   }
   //从后端获取到弹幕并添加
   function query() {
-    $.get("query.php",function(data,status){
-      var danmu_from_sql=eval(data);
-      for (var i=0;i<danmu_from_sql.length;i++){
-        var danmu_ls=eval('('+danmu_from_sql[i]+')');
-        $('#danmu').danmu("addDanmu",danmu_ls);
-      }
-    });
+    // $.get("query.php",function(data,status){
+    //   var danmu_from_sql=eval(data);
+    //   for (var i=0;i<danmu_from_sql.length;i++){
+    //     var danmu_ls=eval('('+danmu_from_sql[i]+')');
+    //     $('#danmu').danmu("addDanmu",danmu_ls);
+    //   }
+    // });
   }
   //发送弹幕，使用了文档README.md第7节中推荐的方法
   function send(){
@@ -154,7 +154,7 @@ Demo<br><br>
     var time = $('#danmu').data("nowTime")+1;
     var size =document.getElementById('text_size').value;
     var text_obj='{ "text":"'+text+'","color":"'+color+'","size":"'+size+'","position":"'+position+'","time":'+time+'}';
-    $.post("stone.php",{danmu:text_obj});
+    // $.post("stone.php",{danmu:text_obj});
     var text_obj='{ "text":"'+text+'","color":"'+color+'","size":"'+size+'","position":"'+position+'","time":'+time+',"isnew":""}';
     var new_obj=eval('('+text_obj+')');
     $('#danmu').danmu("addDanmu",new_obj);
